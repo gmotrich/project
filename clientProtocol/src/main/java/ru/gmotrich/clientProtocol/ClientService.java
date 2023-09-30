@@ -15,7 +15,7 @@ public class ClientService {
 
     public void sendMessage(Header header, Object data) throws IOException {
         try {
-            Socket socket = new Socket("172.23.0.2", 8080);
+            Socket socket = new Socket("172.10.1.2", 8080);
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
