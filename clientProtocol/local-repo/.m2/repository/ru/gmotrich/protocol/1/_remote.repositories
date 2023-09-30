@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Sep 30 14:37:26 MSK 2023
+protocol-1.jar>=
+protocol-1.pom>=

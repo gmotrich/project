@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./clientProtocol
+      dockerfile: Dockerfile
+    container_name: 'client_container'
+    depends_on:
+      - server
+  server:
+    build:
+      context: ./serverProtocol
+      dockerfile: Dockerfile
+    container_name: 'server_container'

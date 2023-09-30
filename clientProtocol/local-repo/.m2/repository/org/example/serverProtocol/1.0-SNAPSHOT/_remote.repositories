@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Sep 30 23:12:56 MSK 2023
+serverProtocol-1.0-SNAPSHOT.jar>=
+serverProtocol-1.0-SNAPSHOT.pom>=
