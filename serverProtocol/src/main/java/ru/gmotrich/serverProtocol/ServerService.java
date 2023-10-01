@@ -8,6 +8,7 @@ import ru.gmotrich.protocol.entity.MaskingOfInputs;
 import ru.gmotrich.protocol.entity.ResultOfCommandExecution;
 import ru.gmotrich.protocol.entity.dataStructures.*;
 import ru.gmotrich.protocol.entity.message.Header;
+import ru.gmotrich.protocol.entity.message.Message;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,12 +31,14 @@ public class ServerService {
             ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            Header clientObject1 = (Header) objectInputStream.readObject();
-            Object clientObject2 = objectInputStream.readObject();
+            Message message = (Message) objectInputStream.readObject();
 
-            logger.info("Message source: " + clientObject1.getSource());
+            Header header = message.getHeader();
+            Object clientObject = message.getData();
 
-            replyMessage(clientObject1, clientObject2, objectOutputStream);
+            logger.info("Message source: " + header.getSource());
+
+            replyMessage(header, clientObject, objectOutputStream);
 
             clientSocket.close();
             serverSocket.close();

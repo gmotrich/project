@@ -8,6 +8,7 @@ import ru.gmotrich.protocol.entity.dataStructures.SettingTheMode;
 import ru.gmotrich.protocol.entity.enums.MessageType;
 import ru.gmotrich.protocol.entity.enums.NodeType;
 import ru.gmotrich.protocol.entity.message.Header;
+import ru.gmotrich.protocol.entity.message.Message;
 
 import java.io.IOException;
 
@@ -31,8 +32,12 @@ public class ClientProtocolApplication {
         sliceMessage.setMode('v');
         sliceMessage.setTime(10);
 
+        Message message = new Message();
+        message.setHeader(header);
+        message.setData(sliceMessage);
+
         try {
-            client.sendMessage(header, sliceMessage);
+            client.sendMessage(message);
 
         } catch (IOException e) {
             e.printStackTrace();

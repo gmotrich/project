@@ -3,6 +3,7 @@ package ru.gmotrich.clientProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.gmotrich.protocol.entity.message.Header;
+import ru.gmotrich.protocol.entity.message.Message;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,7 +14,7 @@ public class ClientService {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
 
-    public void sendMessage(Header header, Object data) throws IOException {
+    public void sendMessage(Message message) throws IOException {
         try {
             Socket socket = new Socket("172.10.1.2", 8080);
 
@@ -21,8 +22,7 @@ public class ClientService {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 
 
-            objectOutputStream.writeObject(header);
-            objectOutputStream.writeObject(data);
+            objectOutputStream.writeObject(message);
             objectOutputStream.flush();
             logger.info("Sent object to server: ");
 
